@@ -5,9 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Weather Dashboard App</title>
 </head>
 <body>
+
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <h3 class="card-header text-uppercase">Enter City Name</h3>
+                <form id="user-form" class="card-body">
+                  <label class="form-label" for="cityname">City Name</label>
+                  <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input" />
+                  <button type="submit" class="btn">Get City Weather</button>
+                </form>
+              </div>  
+        </div>
+      
+        <div class="col-12 col-md-8"></div>
+      </main>
     
     <script src="assets/js/script.js"></script>
 </body>
