@@ -1,0 +1,12 @@
+body {
+    background: url('https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Weather-Background.jpg'); 
+
+}
+
+.card, .weather-input, .subtitle {
+    background-color: skyblue;
+}
+
+h2 {
+    margin-bottom: 0%;
+}

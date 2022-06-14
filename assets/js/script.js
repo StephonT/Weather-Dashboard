@@ -208,7 +208,7 @@ var displayForecast = function (list) {
 
         // temp
         var displayTemp = document.querySelector(`#temp-${i}`);
-        var forecastTemp = list[i].main.temp + " °F";
+        var forecastTemp = "Temp: " + list[i].main.temp + " °F";
         displayTemp.textContent = forecastTemp; 
 
         //humidity
