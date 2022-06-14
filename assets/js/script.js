@@ -33,17 +33,23 @@ var getCityWeather = function(city) {
     // format the openweather api
    var currentWeatherUrl= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperials&appid=" + apiKey;
 
-   //make a request to url
+   //if response was successful
    fetch(currentWeatherUrl).then(function(response) {
-    response.json().then(function(data) {
-        
-        // diplay city data to the console 
-        displayCityWeather(data, city)
-        
+        if (response.ok) {
+            response.json().then(function(data){
+
+               // diplay city data to the console 
+        displayCityWeather(data, city) 
+            })
+        } else {
+            alert("Error:" + response.statusText);
+        }
     })
-   })
-    
-}
+    //if network error
+    .catch(function(error) {
+        alert("Unable to connect to Open Weather");
+    })
+};
 
 // Function to display current weather for city
 var displayCityWeather = function (city, searchTerm) {
