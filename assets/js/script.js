@@ -68,9 +68,15 @@ var displayCityWeather = function (city, searchTerm) {
      var currentTemp = Math.round(city.main.temp * (9/5) - 459.67).toFixed(0) + " °F";
      displayTemp.textContent = currentTemp; 
 
-      
+      //display humidity
+     var displayHumidity = document.querySelector("#humidity-input");
+     var currentHumidity = city.main.humidity + "%";
+     displayHumidity.textContent = currentHumidity
 
-
+     //display wind
+     var displayWind = document.querySelector("#wind-input");
+     var currentWind = city.wind.speed + " mph";
+     displayWind.textContent = currentWind
     
 }
 
