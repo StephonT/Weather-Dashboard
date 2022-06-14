@@ -1,14 +1,15 @@
 //API Key
 var apiKey = "7c0b6aaecdbe620bab99fac8b7710966"
 
+//DOM elements to display on page
+// DOM elements to display on page 
 var userFormEl = document.querySelector("#user-form");
-var cityInputEl = document.querySelector("#cityname");
-var currentContainerEl = document.querySelector("#current-container")
-var citySearchTerm = document.querySelector("#city-search-term")
-var currentDateEl = document.querySelector("#city-current-date")
-var currentIconEl = document.querySelector("#city-current-icon")
+var cityInputEl = document.querySelector("#city-input");
+var cityContainerEl = document.querySelector("#city-container");
+var citySearchTerm = document.querySelector("#city-search-term");
+var currentWeather = document.querySelector("#current-weather");
+var previousCityEl = document.getElementById("search-container");
 var fiveDayEl = document.querySelector("#forecast-cards");
-var searchContainerEl = document.getElementById("search-container");
 var currentUvEl = document.querySelector("#uv-input")
 
 var cityArray = [];
@@ -20,45 +21,37 @@ var formSubmitHandler = function(event) {
     event.preventDefault();
 
     //get value from input element
-    var cityname = cityInputEl.value.trim();
+    var city = cityInputEl.value.trim();
 
-    if(cityname) {
-        getCityWeather(cityname);
-        getForecast(cityname)
+    if(city) {
+        getCityWeather(city);
+        getForecast(city)
 
         // Push city name into Array in Local Storage
-        cityArray.push(cityname);
-        localStorage.setItem("cityname", JSON.stringify(cityArray));
-        localStorage.getItem("citname");
+        cityArray.push(city);
+        localStorage.setItem("city", JSON.stringify(cityArray));
 
-        document.getElementById("search-container").textContent = cityArray;
-        
 
-        // Empty City Search Bar
-        cityInputEl.value= "";
+         // Empty City Search Bar
+         cityInputEl.value= "";
         
     } else {
         alert("Please enter city name")
     }
 
-    //Set local Storage to search value text
-  localStorage.setItem('searchText', cityname)
+};
 
- // If local storage is full run populate with saved city text. (for reload)
-if(searchTerm !== null){
-    console.log(searchTerm)
-    var text = searchTerm
-    populate(text)
-  }
+// clicking on previous searched city
+var clickHandler = function (event) {
 
-  
-    
-  console.log(event);
+    var clickCity = event.currentTarget.textContent;
+
+    getCityWeather(clickCity);
+    getForecast(clickCity);
 };
 
 
-
-
+// Requesting Current Weather API
 
 var getCityWeather = function(city) {
     // format the openweather api
@@ -82,13 +75,13 @@ var getCityWeather = function(city) {
     })
 };
 
-// Function to display current weather for city
+// Function to display current weather data
 var displayCityWeather = function (city, searchTerm) {
     console.log(city);
     console.log(searchTerm);
 
     // clear old content
-    currentContainerEl.textContent = "";
+    //cityContainerEl.textContent = "";
     citySearchTerm.textContent = searchTerm;
 
     //display current weather data 
@@ -115,6 +108,13 @@ var displayCityWeather = function (city, searchTerm) {
      var displayWind = document.querySelector("#wind-input");
      var currentWind = city.wind.speed + " mph";
      displayWind.textContent = currentWind
+
+     // display list items
+     var newCityEl = document.createElement("li");
+     newCityEl.className = "list-group-item";
+     newCityEl.textContent = searchTerm;
+     newCityEl.addEventListener("click", clickHandler);
+     previousCityEl.appendChild(newCityEl); 
 
      //for Uv Index
      var lon = city.coord.lon;
@@ -241,7 +241,7 @@ var displayForecast = function (list) {
     }
 
    
-
+// Form Search Button
   userFormEl.addEventListener("submit", formSubmitHandler);
   
   
