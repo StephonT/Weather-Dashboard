@@ -30,7 +30,7 @@ var formSubmitHandler = function(event) {
 
 var getCityWeather = function(city) {
     // format the openweather api
-   var currentWeatherUrl= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+   var currentWeatherUrl= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperials&appid=" + apiKey;
 
    //make a request to url
    fetch(currentWeatherUrl).then(function(response) {
@@ -57,6 +57,19 @@ var displayCityWeather = function (city, searchTerm) {
     var displayCurrentDate = document.querySelector("#city-current-date")
     var currentDate = moment();
     displayCurrentDate.textContent = currentDate.format("(L)");
+
+    //display weather icon
+    var displayIcon = document.querySelector("#city-current-icon")
+    var currentIcon = "http://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x.png";
+    displayIcon.setAttribute ("src", currentIcon);
+
+     // display temperature 
+     var displayTemp = document.querySelector("#temp-input");
+     var currentTemp = Math.round(city.main.temp * (9/5) - 459.67).toFixed(0) + " °F";
+     displayTemp.textContent = currentTemp; 
+
+      
+
 
     
 }
