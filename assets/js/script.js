@@ -7,6 +7,7 @@ var currentContainerEl = document.querySelector("#current-container")
 var citySearchTerm = document.querySelector("#city-search-term")
 var currentDateEl = document.querySelector("#city-current-date")
 var currentIconEl = document.querySelector("#city-current-icon")
+var currentUvEl = document.querySelector("#uv-input")
 
 
 //Function that will execute upon form submission
@@ -77,8 +78,49 @@ var displayCityWeather = function (city, searchTerm) {
      var displayWind = document.querySelector("#wind-input");
      var currentWind = city.wind.speed + " mph";
      displayWind.textContent = currentWind
+
+     //for Uv Index
+     var lon = city.coord.lon;
+     var lat = city.coord.lat;
+
+     searchCityUV(lon, lat, city)
     
 }
+
+     // requesting UV index API 
+var searchCityUV = function(lon, lat, city) {
+    var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?q=" + city + "&appid=" + apiKey + "&lat=" + lat + "&lon=" + lon; 
+
+    fetch(uvUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(lon, lat, city) {
+                displayCurrentUv(lon, lat, city);
+            });
+        } else {
+            alert("Error:" + response.statusText);
+        }
+        })
+        
+        // if network error 
+        .catch(function(error) {
+            alert("Unable to connect to Open Weather");
+    })
+};
+
+// display UV
+var displayCurrentUv = function(data) {
+    var uv = data.value;
+        if (uv >= 6) {
+            currentUvEl.classList="badge badge-danger"
+            currentUvEl.innerHTML=" " + uv + " ";
+        } else if (uv > 3 ) {
+            currentUvEl.classList="badge badge-warning"
+            currentUvEl.innerHTML=" " + uv + " ";
+        } else {
+            currentUvEl.classList="badge badge-success"
+            currentUvEl.innerHTML=" " + uv + " ";
+        }
+};
 
   userFormEl.addEventListener("submit", formSubmitHandler);
   
