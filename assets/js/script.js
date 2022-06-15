@@ -132,7 +132,8 @@ var searchCityUV = function(lon, lat, city) {
     })
 };
 
-// display UV
+
+// Display UV
 var displayCurrentUv = function(data) {
     var uv = data.value;
         if (uv >= 6) {
@@ -146,6 +147,7 @@ var displayCurrentUv = function(data) {
             currentUvEl.innerHTML=" " + uv + " ";
         }
 };
+
 
 // 5 day forecast API 
 var getForecast = function(city) {
@@ -166,6 +168,7 @@ var getForecast = function(city) {
         alert("Unable to connect to Open Weather");
     })
 };
+
 
 // Displaying 5 day forecast   
 var displayForecast = function (list) { 
@@ -233,7 +236,7 @@ var displayForecast = function (list) {
         }
     }
 
-    // clicking on previous searched city
+    // Ability to click on previous searched city
 var clickHandler = function (event) {
 
     var clickCity = event.currentTarget.textContent;
