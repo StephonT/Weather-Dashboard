@@ -9,4 +9,4 @@ In this challenge, I used API calls from the Open Weather website to get current
 
 
 ## Link
-Find out what the weather in your city is like and will be by pressing this link: 
+Find out what the weather in your city is like and will be by pressing this link: <a href="https://stephont.github.io/Weather-Dashboard/">Weather Dashboard</a>
