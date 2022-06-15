@@ -30,7 +30,7 @@ var formSubmitHandler = function(event) {
 
         // Push city name into Array in Local Storage
         cityArray.push(city);
-        localStorage.setItem("city", JSON.stringify(cityArray));
+        saveRecentCity();
 
 
          // Empty City Search Bar
@@ -198,6 +198,11 @@ var displayForecast = function (list) {
         var displayTemp = document.querySelector(`#temp-${i}`);
         var forecastTemp = "Temp: " + Math.round(list[i].main.temp) + " °F";
         displayTemp.textContent = forecastTemp; 
+        
+        // wind speed 
+        var displayWind = document.querySelector(`#wind-${i}`);
+        var forecastWind = "Wind Speed: " + list[i].wind.speed + " mph";
+        displayWind.textContent = forecastWind; 
 
         //humidity
         var displayHumidity = document.querySelector(`#humidity-${i}`);
@@ -246,7 +251,16 @@ var recentCity = function (searchTerm) {
     newCityEl.addEventListener("click", clickHandler);
     previousCityEl.appendChild(newCityEl); 
 
+};
+
+// Save in Local Storage
+var saveRecentCity = function() {
+    localStorage.setItem("city", JSON.stringify(cityArray));
 }
+
+
+
+
 
    
 // Form Search Button

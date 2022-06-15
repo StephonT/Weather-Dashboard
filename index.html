@@ -20,25 +20,29 @@
 
       <!-- Search bar -->
           <div class="row">
-              <div class="col-4">
+              <div class="col-lg-4 side">
                   <div class="card bg-light">
-                  <h3 class="card-header text-uppercase text-white">Enter City Name</h3>
+                  <h3 class="card-header text-uppercase text-white">Find City Weather</h3>
                   <form id="user-form" class="card-body">
                       <label class="form-label" for="city-input"></label>
-                      <input name="city-input" size="20" id="city-input" type="text" autofocus="true" class="form-input" />
+                      <input name="city-input" size="20" id="city-input" type="text" autofocus="true" class="form-input" placeholder="Enter City Name" />
                       <button type="submit" class="btn btn-light mt-3">Get City Weather</button>
                   </form>
-                  <h2 class="recent-search text-white">Recent Search</h2>
-                  <ul class="list-group" id="search-container"></ul>
+                  <div class="card card-one">
+                    <div class=" card-body1 recent-search text-white">
+                    Recent Searches
+                    </div>
+                    <ul class="list-group" id="search-container"></ul>
+                  </div>
                     
               </div>
           </div>
       
         <!-- City Card -->
         <div class="col-8">
-          <div class="card bg-white">
+          <div class="card bg-white mt-2">
               <div class="current-weather">
-              <h2 class="subtitle text-white"><span id="city-search-term">Search for a city to view weather</span>
+              <h2 class="subtitle text-white"><span id="city-search-term">Current Weather Will Display Below</span>
                   <span id="city-current-date"></span>
                   <img id="city-current-icon"></img>
               </h2>
@@ -64,39 +68,44 @@
 
           <div class="row" id="forecast-cards">
             
-              <div class="card col-2" id="day-1">
+              <div class="card col-2 mr-3" id="day-1">
                   <p class="card-1 text-white" id="date-0">Date</p>
                   <img id="city-icon-1"></img>
                   <p class="card-1 text-white" id="temp-0">Temp:</p>
                   <p class="card-1 text-white" id="humidity-0">Humidity:</p>
+                  <p class="card-1 text-white" id="wind-0">Wind:</p>
               </div>
         
-              <div class="card col-2" id="day-2">
+              <div class="card col-2 mr-3" id="day-2">
                   <p class="card-2 text-white" id="date-1">Date</p>
                   <img id="city-icon-2"></img>
                   <p class="card-2 text-white" id="temp-1">Temp:</p>
                   <p class="card-2 text-white" id="humidity-1">Humidity:</p>
+                  <p class="card-2 text-white" id="wind-1">Wind:</p>
               </div>
        
-              <div class="card col-2" id="day-3">
+              <div class="card col-2 mr-3" id="day-3">
                   <p class="card-3 text-white" id="date-2">Date</p>
                   <img id="city-icon-3"></img>
                   <p class="card-3 text-white" id="temp-2">Temp:</p>
                   <p class="card=3 text-white" id="humidity-2">Humidity:</p>
+                  <p class="card-3 text-white" id="wind-2">Wind:</p>
               </div>
   
-              <div class="card col-2" id="day-4">
+              <div class="card col-2 mr-3" id="day-4">
                   <p class="card-4 text-white" id="date-3">Date</p>
                   <img id="city-icon-4"></img>
                   <p class="card-4 text-white" id="temp-3">Temp:</p>
                   <p class="card-4 text-white" id="humidity-3">Humidity:</p>
+                  <p class="card-4 text-white" id="wind-3">Wind:</p>
               </div>
   
-              <div class="card col-2" id="day-5">
+              <div class="card col-2 " id="day-5">
                   <p class="card-5 text-white" id="date-4">Date</p>
                   <img id="city-icon-5"></img>
                   <p class="card-5 text-white" id="temp-4">Temp:</p>
                   <p class="card-5 text-white" id="humidity-4">Humidity:</p>
+                  <p class="card-5 text-white" id="wind-4">Wind:</p>
               </div>
               
           </div>
