@@ -3,10 +3,14 @@ body {
 
 }
 
-.card, .weather-input, .subtitle {
+.card, .weather-input, .subtitle, h1 {
     background-color: skyblue;
 }
 
 h2 {
     margin-bottom: 0%;
+}
+
+.card-header, .card-body, h2 {
+    background-color: skyblue;
 }

@@ -13,7 +13,7 @@
 <body>
 
     <header>
-        <h1 class="text-center p-3 mb-2 bg-info text-white">Weather Dashboard</h1>
+        <h1 class="text-center p-3 mb-2 text-white">Weather Dashboard</h1>
     </header>
 
     <div class="weather-container container">
@@ -22,12 +22,13 @@
           <div class="row">
               <div class="col-4">
                   <div class="card bg-light">
-                  <h3 class="card-header text-uppercase">Enter City Name</h3>
+                  <h3 class="card-header text-uppercase text-white">Enter City Name</h3>
                   <form id="user-form" class="card-body">
                       <label class="form-label" for="city-input"></label>
-                      <input name="city-input" size="30" id="city-input" type="text" autofocus="true" class="form-input" />
-                      <button type="submit" class="btn btn-info mt-3">Get City Weather</button>
+                      <input name="city-input" size="20" id="city-input" type="text" autofocus="true" class="form-input" />
+                      <button type="submit" class="btn btn-light mt-3">Get City Weather</button>
                   </form>
+                  <h2 class="recent-search text-white">Recent Search</h2>
                   <ul class="list-group" id="search-container"></ul>
                     
               </div>
@@ -63,7 +64,7 @@
 
           <div class="row" id="forecast-cards">
             
-              <div class="card col-3" id="day-1">
+              <div class="card col-2" id="day-1">
                   <p class="card-1 text-white" id="date-0">Date</p>
                   <img id="city-icon-1"></img>
                   <p class="card-1 text-white" id="temp-0">Temp:</p>

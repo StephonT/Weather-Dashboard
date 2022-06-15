@@ -1,7 +1,6 @@
 //API Key
 var apiKey = "7c0b6aaecdbe620bab99fac8b7710966"
 
-//DOM elements to display on page
 // DOM elements to display on page 
 var userFormEl = document.querySelector("#user-form");
 var cityInputEl = document.querySelector("#city-input");
@@ -12,6 +11,7 @@ var previousCityEl = document.getElementById("search-container");
 var fiveDayEl = document.querySelector("#forecast-cards");
 var currentUvEl = document.querySelector("#uv-input")
 
+// To save to local storage
 var cityArray = [];
 
 
@@ -26,6 +26,7 @@ var formSubmitHandler = function(event) {
     if(city) {
         getCityWeather(city);
         getForecast(city)
+        recentCity(city);
 
         // Push city name into Array in Local Storage
         cityArray.push(city);
@@ -41,16 +42,7 @@ var formSubmitHandler = function(event) {
 
 };
 
-// clicking on previous searched city
-var clickHandler = function (event) {
-
-    var clickCity = event.currentTarget.textContent;
-
-    getCityWeather(clickCity);
-    getForecast(clickCity);
-};
-
-
+   
 // Requesting Current Weather API
 
 var getCityWeather = function(city) {
@@ -96,7 +88,7 @@ var displayCityWeather = function (city, searchTerm) {
 
      // display temperature 
      var displayTemp = document.querySelector("#temp-input");
-     var currentTemp = Math.round(city.main.temp * (9/5) - 459.67).toFixed(0) + " °F";
+     var currentTemp = (city.main.temp * (9/5) - 459.67).toFixed(0) + " °F";
      displayTemp.textContent = currentTemp; 
 
       //display humidity
@@ -109,12 +101,6 @@ var displayCityWeather = function (city, searchTerm) {
      var currentWind = city.wind.speed + " mph";
      displayWind.textContent = currentWind
 
-     // display list items
-     var newCityEl = document.createElement("li");
-     newCityEl.className = "list-group-item";
-     newCityEl.textContent = searchTerm;
-     newCityEl.addEventListener("click", clickHandler);
-     previousCityEl.appendChild(newCityEl); 
 
      //for Uv Index
      var lon = city.coord.lon;
@@ -123,6 +109,8 @@ var displayCityWeather = function (city, searchTerm) {
      searchCityUV(lon, lat, city)
     
 }
+
+ 
 
      // requesting UV index API 
 var searchCityUV = function(lon, lat, city) {
@@ -208,12 +196,12 @@ var displayForecast = function (list) {
 
         // temp
         var displayTemp = document.querySelector(`#temp-${i}`);
-        var forecastTemp = "Temp: " + list[i].main.temp + " °F";
+        var forecastTemp = "Temp: " + Math.round(list[i].main.temp) + " °F";
         displayTemp.textContent = forecastTemp; 
 
         //humidity
         var displayHumidity = document.querySelector(`#humidity-${i}`);
-        var forecastHumidity = list[i].main.humidity + "%";
+        var forecastHumidity = "Humid: " + list[i].main.humidity + "%";
         displayHumidity.textContent = forecastHumidity;
         
         // weather icons 
@@ -239,6 +227,26 @@ var displayForecast = function (list) {
 
         }
     }
+
+    // clicking on previous searched city
+var clickHandler = function (event) {
+
+    var clickCity = event.currentTarget.textContent;
+
+    getCityWeather(clickCity);
+    getForecast(clickCity);
+};
+
+// Function to save recent search of city
+var recentCity = function (searchTerm) {
+
+    var newCityEl = document.createElement("li");
+    newCityEl.className = "list-group-item";
+    newCityEl.textContent = searchTerm;
+    newCityEl.addEventListener("click", clickHandler);
+    previousCityEl.appendChild(newCityEl); 
+
+}
 
    
 // Form Search Button
