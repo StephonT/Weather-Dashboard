@@ -175,12 +175,12 @@ var displayForecast = function (list) {
     console.log(list);
 
         for (var i = 0; i <= 4; i++) {
-        console.log(`I ran this ${i + 1}times`)
+        
         //date
         //creating HTML Elements
         var mainDiv = document.createElement('div')
         mainDiv.setAttribute('class', 'card col-2 mr-3' )
-        mainDiv.setAttribute('id', `day-${i + 1}`)
+        mainDiv.setAttribute('id', `day-${i}`)
 
         var dateEl = document.createElement('p')
         dateEl.setAttribute('class', 'card-1 text-white')
@@ -252,10 +252,6 @@ var saveRecentCity = function() {
 
 
 
-
-
-
-   
 // Form Search Button
   userFormEl.addEventListener("submit", formSubmitHandler);
   
